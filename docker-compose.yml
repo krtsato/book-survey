@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  survey:
+    build:
+      context: .
+      dockerfile: build/docker/survey.dockerfile
+    image: survey-img
+    container_name: survey-cont
+    ports:
+      - 9999:9999
+    command: bash
+    tty: true
+    volumes:
+      - .:/job-survey
+
+  mysql:
+    build:
+      context: .
+      dockerfile: build/docker/mysql.dockerfile
+    env_file: ./build/env/mysql.env
+    image: mysql-img
+    container_name: mysql-cont
+    ports:
+      - 3306:3306
+    volumes:
+      - job-survey-mysql-vol:/var/lib/mysql
+      - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
+      - ./mysql/log:/var/log
+      - ./mysql/dump:/var/dump
+
+volumes:
+  job-survey-mysql-vol:
