@@ -6,7 +6,7 @@
 - Docker Desktop 2.3.0.4 (Engine 19.03.12)
 - Golang
 - MySQL
-- Yahoo 求人情報取得 API
+- 楽天ブックス書籍検索 API
 
 ## 環境構築
 
@@ -19,7 +19,7 @@
 
 ## 求人情報取得
 
-- API から求人情報を取得する
+- API から書籍情報を取得する
 - assets/ に tsv ファイルを出力する
 
 ```zsh

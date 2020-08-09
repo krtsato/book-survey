@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: build/docker/survey.dockerfile
+    env_file: ./build/env/survey.env
     image: survey-img
     container_name: survey-cont
     ports:
@@ -12,7 +13,7 @@ services:
     command: bash
     tty: true
     volumes:
-      - .:/job-survey
+      - .:/book-survey
 
   mysql:
     build:
@@ -24,10 +25,10 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - job-survey-mysql-vol:/var/lib/mysql
+      - book-survey-mysql-vol:/var/lib/mysql
       - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
       - ./mysql/log:/var/log
       - ./mysql/dump:/var/dump
 
 volumes:
-  job-survey-mysql-vol:
+  book-survey-mysql-vol:

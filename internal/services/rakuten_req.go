@@ -1,22 +1,26 @@
 package services
 
 import (
+	"book-survey/internal/io"
 	"fmt"
 	"io/ioutil"
-	"job-survey/internal/io"
 	"net/http"
 	"net/url"
-	"strconv"
 )
 
 func SendRequest(reqParams *io.ReqParams) ([]byte, error) {
-	// URL とクエリを用意する
-	reqUrl := "https://job.yahooapis.jp/v1/furusato/jobinfo/"
+	reqUrl := "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404"
+
+	// クエリをパーセント形式にする
+
+	// クエリを準備する
 	reqVals := url.Values{}
-	reqVals.Add("appid", reqParams.AppId)
-	reqVals.Add("localGovernmentCode", strconv.Itoa(reqParams.LocalGovernmentCode))
-	reqVals.Add("start", strconv.Itoa(reqParams.Start))
-	reqVals.Add("results", strconv.Itoa(reqParams.Results))
+	reqVals.Add("applicationId", reqParams.AppId)
+	reqVals.Add("elements", "")       // hoge,fuga,piyo
+	reqVals.Add("formatVersion", "")  // 2
+	reqVals.Add("page", "")           // 1 ~ 100
+	reqVals.Add("outOfStockFlag", "") // 1
+	reqVals.Add("sort", "")           // sales
 
 	// リクエストを作成する
 	request, err := http.NewRequest("GET", reqUrl, nil)
@@ -24,6 +28,7 @@ func SendRequest(reqParams *io.ReqParams) ([]byte, error) {
 		return nil, fmt.Errorf("While creating the new Request: %w", err)
 	}
 	request.URL.RawQuery = reqVals.Encode()
+	fmt.Println(request.URL.RawQuery)
 
 	// リクエストを送信する
 	client := new(http.Client)

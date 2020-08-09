@@ -1,6 +1,6 @@
 FROM golang:1.14.7-alpine3.12
 
-WORKDIR /job-survey
+WORKDIR /book-survey
 
 ENV GO111MODULE on
 
@@ -15,10 +15,10 @@ COPY . .
 # Multi-stage Build Example
 # FROM golang:1.14.7 as builder
 # ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
-# WORKDIR /job-servey
+# WORKDIR /book-servey
 # COPY . .
 # RUN go build -o cmd/survey cmd/main.go
 #
 # FROM alpine:3.12
-# WORKDIR /job-survey
-# COPY --from=builder /job-survey/cmd/survey ./cmd/survey
+# WORKDIR /book-survey
+# COPY --from=builder /book-survey/cmd/survey ./cmd/survey

@@ -1,3 +1,3 @@
-module job-survey
+module book-survey
 
 go 1.14

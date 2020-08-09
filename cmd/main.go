@@ -1,9 +1,10 @@
 package main
 
 import (
+	"book-survey/internal/io"
+	"book-survey/internal/services"
 	"errors"
-	"job-survey/internal/io"
-	"job-survey/internal/services"
+	"fmt"
 	"log"
 )
 
@@ -15,12 +16,12 @@ func run() error {
 		return err
 	}
 
-	fmtBody, err := services.FormatResponse(resBody)
+	decResBody, err := services.DecordResponse(resBody)
 	if err != nil {
 		return err
 	}
 
-	println(fmtBody)
+	fmt.Printf("%v\n", decResBody)
 	return nil
 }
 
