@@ -6,21 +6,21 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strconv"
 )
 
 func SendRequest(reqParams *io.ReqParams) ([]byte, error) {
 	reqUrl := "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404"
 
-	// クエリをパーセント形式にする
-
 	// クエリを準備する
 	reqVals := url.Values{}
-	reqVals.Add("applicationId", reqParams.AppId)
-	reqVals.Add("elements", "")       // hoge,fuga,piyo
-	reqVals.Add("formatVersion", "")  // 2
-	reqVals.Add("page", "")           // 1 ~ 100
-	reqVals.Add("outOfStockFlag", "") // 1
-	reqVals.Add("sort", "")           // sales
+	reqVals.Add("applicationId", reqParams.ApplicationId)
+	reqVals.Add("elements", reqParams.Elements)
+	reqVals.Add("formatVersion", strconv.Itoa(reqParams.FormatVersion))
+	reqVals.Add("page", strconv.Itoa(reqParams.Page))
+	reqVals.Add("outOfStockFlag", strconv.Itoa(reqParams.OutOfStockFlag))
+	reqVals.Add("sort", reqParams.Sort)
+	reqVals.Add("genreInformationFlag", strconv.Itoa(reqParams.GenreInformationFlag))
 
 	// リクエストを作成する
 	request, err := http.NewRequest("GET", reqUrl, nil)
