@@ -1,3 +1,3 @@
-module job-servey
+module job-survey
 
 go 1.14
