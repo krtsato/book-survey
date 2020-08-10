@@ -34,10 +34,10 @@ type DecResBodyType struct {
 	} `json:"GenreInformation"`
 }
 
-func DecordResponse(resBody []byte) (DecResBodyType, error) {
-	decResBody := DecResBodyType{}
-	if err := json.Unmarshal(resBody, &decResBody); err != nil {
-		return DecResBodyType{}, fmt.Errorf("While unmarshalling the response json: %w", err)
+func DecordResponse(resBody []byte) (*DecResBodyType, error) {
+	decResBody := &DecResBodyType{}
+	if err := json.Unmarshal(resBody, decResBody); err != nil {
+		return &DecResBodyType{}, fmt.Errorf("While unmarshalling the response json: %w", err)
 	}
 	return decResBody, nil
 }

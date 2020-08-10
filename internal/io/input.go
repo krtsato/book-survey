@@ -39,3 +39,27 @@ func SetReqParams() *ReqParams {
 		GenreInformationFlag: genreInformationFlag,
 	}
 }
+
+type DbInfoType struct {
+	RootPw   string
+	User     string
+	Pw       string
+	Database string
+	Host     string
+}
+
+func SetDbInfo() *DbInfoType {
+	rootPw := os.Getenv("MYSQL_ROOT_PASSWORD")
+	user := os.Getenv("MYSQL_USER")
+	pw := os.Getenv("MYSQL_PASSWORD")
+	database := os.Getenv("MYSQL_DATABASE")
+	host := os.Getenv("MYSQL_HOST")
+
+	return &DbInfoType{
+		RootPw:   rootPw,
+		User:     user,
+		Pw:       pw,
+		Database: database,
+		Host:     host,
+	}
+}
