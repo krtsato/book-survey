@@ -7,6 +7,7 @@ ENV GO111MODULE on
 RUN set -ox pipefail \
   && apk update \
   && apk add --no-cache bash vim \
+    mariadb-client mariadb-dev \
   && rm -rf /var/cache/apk/* \
   && go get -u github.com/go-sql-driver/mysql
 

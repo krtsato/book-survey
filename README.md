@@ -12,16 +12,17 @@
 
 - build/env/ に survey.env と mysql.env を配置する
 - docker-compose でコンテナを立ち上げる
+- MySQL のセットアップを行う
 
 ```zsh
 % docker-compose up --build -d
+% docker-compose exec survey scripts/setup_db.sh
 ```
 
-## 求人情報取得
+## 書籍情報取得
 
 - API から書籍情報を取得する
-- assets/ に tsv ファイルを出力する
 
 ```zsh
-% docker-compose exec survey cmd/survey
+% docker-compose exec survey cmd/main.go
 ```

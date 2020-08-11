@@ -14,6 +14,7 @@ services:
     tty: true
     volumes:
       - .:/book-survey
+      - ./mysql/dump:/var/dump
 
   mysql:
     build:
@@ -27,9 +28,7 @@ services:
     volumes:
       - book-survey-mysql-vol:/var/lib/mysql
       - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
-      - ./mysql/initdb.d:/docker-entrypont-initdb.d
       - ./mysql/log:/var/log
-      - ./mysql/dump:/var/dump
 
 volumes:
   book-survey-mysql-vol:

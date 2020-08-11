@@ -9,12 +9,11 @@ import (
 )
 
 func Initialize(dbInfo *io.DbInfoType) (*sql.DB, error) {
-	dataSrcName := fmt.Sprintf("%s:%s@/%s", dbInfo.User, dbInfo.Pw, dbInfo.Database)
+	dataSrcName := fmt.Sprintf("%s:%s@tcp(mysql:3306)/%s", dbInfo.User, dbInfo.Pw, dbInfo.Database)
 	database, err := sql.Open("mysql", dataSrcName)
 	if err != nil {
 		return nil, fmt.Errorf("While opening database: %w", err)
 	}
-	defer database.Close()
 
 	return database, nil
 }

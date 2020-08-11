@@ -24,10 +24,10 @@ func SetReqParams() *ReqParams {
 	}
 	elements := strings.Join(elementSlc, ",")
 	formatVersion := 2
-	page := 1
-	outOfStockFlag := 1
-	sort := "sales"
-	genreInformationFlag := 1
+	page := 1                 // 30 書籍 * 40 ページ
+	outOfStockFlag := 1       // 在庫切れを含める
+	sort := "sales"           // 売上が高い順のレスポンスを求める
+	genreInformationFlag := 1 // ジャンルの情報を含める
 
 	return &ReqParams{
 		ApplicationId:        applicationId,

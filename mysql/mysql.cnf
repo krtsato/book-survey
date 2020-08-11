@@ -10,8 +10,12 @@ socket=/var/lib/mysql/mysql.sock
 slow_query_log # slow query log 有効化
 long_query_time=5 # 5 秒以上時間を要したクエリを記録
 log-queries-not-using-indexes # index が未使用のクエリを出力
-slow_query_log_file=/var/log/mysqld_slow.log # log のパス
+slow_query_log_file=/var/log/slow.log # log のパス
+log-error=/var/log/error.log
+general_log_file=/var/log/general.log
+general_log=0
+
+sql_mode=NO_ZERO_DATE
 
 [mysqld_safe]
-log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid

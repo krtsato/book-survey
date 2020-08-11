@@ -28,7 +28,6 @@ func SendRequest(reqParams *io.ReqParams) ([]byte, error) {
 		return nil, fmt.Errorf("While creating the new Request: %w", err)
 	}
 	request.URL.RawQuery = reqVals.Encode()
-	fmt.Println(request.URL.RawQuery)
 
 	// リクエストを送信する
 	client := new(http.Client)
