@@ -26,3 +26,5 @@ func FmtSalesDate(decResBody *services.DecResBodyType) {
 		decResBody.Items[i].SalesDate = fmtDate
 	}
 }
+
+// BooksGenreID : 000000000.../11111111.../222222222/... を整形する
